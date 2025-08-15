@@ -18,4 +18,5 @@ public sealed partial class PhoneNumberType
     public static readonly PhoneNumberType Landline = new(nameof(Landline));
     public static readonly PhoneNumberType Shortcode = new(nameof(Shortcode));
     public static readonly PhoneNumberType Longcode = new(nameof(Longcode));
+    public static readonly PhoneNumberType Unknown = new(nameof(Unknown));
 }
