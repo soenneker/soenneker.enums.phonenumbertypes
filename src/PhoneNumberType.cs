@@ -1,4 +1,4 @@
-﻿using Intellenum;
+using Soenneker.Gen.EnumValues;
 using Soenneker.Attributes.PublicOpenApiObject;
 
 namespace Soenneker.Enums.PhoneNumberTypes;
@@ -7,7 +7,7 @@ namespace Soenneker.Enums.PhoneNumberTypes;
 /// An enumerator describing phone number types
 /// </summary>
 [PublicOpenApiObject]
-[Intellenum<string>]
+[EnumValue<string>]
 public sealed partial class PhoneNumberType
 {
     public static readonly PhoneNumberType Local = new(nameof(Local));
