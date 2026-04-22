@@ -1,10 +1,9 @@
-﻿using Xunit;
 
 namespace Soenneker.Enums.PhoneNumberTypes.Tests;
 
 public sealed class PhoneNumberTypeTests
 {
-    [Fact]
+    [Test]
     public void Default()
     {
 
