@@ -4,46 +4,46 @@ using Soenneker.Attributes.PublicOpenApiObject;
 namespace Soenneker.Enums.PhoneNumberTypes;
 
 /// <summary>
-/// An enumerator describing phone number types
+/// Classifies a telephone number by reach, billing model, network, or dialing format.
 /// </summary>
 [PublicOpenApiObject]
 [EnumValue<string>]
 public sealed partial class PhoneNumberType
 {
     /// <summary>
-    /// The local.
+    /// A number expressed in a local dialing format.
     /// </summary>
     public static readonly PhoneNumberType Local = new(nameof(Local));
     /// <summary>
-    /// The toll free.
+    /// A toll-free number for which the recipient generally pays the call charges.
     /// </summary>
     public static readonly PhoneNumberType TollFree = new(nameof(TollFree));
     /// <summary>
-    /// The mobile.
+    /// A number assigned to a mobile or cellular service.
     /// </summary>
     public static readonly PhoneNumberType Mobile = new(nameof(Mobile));
     /// <summary>
-    /// The national.
+    /// A number expressed in a national dialing format.
     /// </summary>
     public static readonly PhoneNumberType National = new(nameof(National));
     /// <summary>
-    /// The shared cost.
+    /// A shared-cost number whose call charges are divided between caller and recipient.
     /// </summary>
     public static readonly PhoneNumberType SharedCost = new(nameof(SharedCost));
     /// <summary>
-    /// The landline.
+    /// A number assigned to a fixed-line telephone service.
     /// </summary>
     public static readonly PhoneNumberType Landline = new(nameof(Landline));
     /// <summary>
-    /// The shortcode.
+    /// A short code used for abbreviated dialing or messaging.
     /// </summary>
     public static readonly PhoneNumberType Shortcode = new(nameof(Shortcode));
     /// <summary>
-    /// The longcode.
+    /// A standard-length number used for voice or messaging.
     /// </summary>
     public static readonly PhoneNumberType Longcode = new(nameof(Longcode));
     /// <summary>
-    /// The unknown.
+    /// The phone-number classification could not be determined.
     /// </summary>
     public static readonly PhoneNumberType Unknown = new(nameof(Unknown));
 }
