@@ -5,7 +5,7 @@
 
 # Soenneker.Enums.PhoneNumberTypes
 
-Classifies a telephone number by reach, billing model, network, or dialing format.
+A string-backed enum-value type for carrying a provider or application-supplied telephone-number classification.
 
 ## Install
 
@@ -13,20 +13,26 @@ Classifies a telephone number by reach, billing model, network, or dialing forma
 dotnet add package Soenneker.Enums.PhoneNumberTypes
 ```
 
-## What you get
+## Usage
 
-- `PhoneNumberType` — Classifies a telephone number by reach, billing model, network, or dialing format.
+```csharp
+using Soenneker.Enums.PhoneNumberTypes;
 
-## API at a glance
+PhoneNumberType numberType = PhoneNumberType.TollFree;
+string wireValue = numberType.Value; // "TollFree"
 
-| API | What it does | Result / important behavior |
-| --- | --- | --- |
-| `PhoneNumberType.Local` | A number expressed in a local dialing format. | A number expressed in a local dialing format. |
-| `PhoneNumberType.TollFree` | A toll-free number for which the recipient generally pays the call charges. | A toll-free number for which the recipient generally pays the call charges. |
-| `PhoneNumberType.Mobile` | A number assigned to a mobile or cellular service. | A number assigned to a mobile or cellular service. |
-| `PhoneNumberType.National` | A number expressed in a national dialing format. | A number expressed in a national dialing format. |
-| `PhoneNumberType.SharedCost` | A shared-cost number whose call charges are divided between caller and recipient. | A shared-cost number whose call charges are divided between caller and recipient. |
-| `PhoneNumberType.Landline` | A number assigned to a fixed-line telephone service. | A number assigned to a fixed-line telephone service. |
-| `PhoneNumberType.Shortcode` | A short code used for abbreviated dialing or messaging. | A short code used for abbreviated dialing or messaging. |
-| `PhoneNumberType.Longcode` | A standard-length number used for voice or messaging. | A standard-length number used for voice or messaging. |
-| `PhoneNumberType.Unknown` | The phone-number classification could not be determined. | The phone-number classification could not be determined. |
+if (PhoneNumberType.TryFromValue(providerValue, out PhoneNumberType? parsed))
+{
+    // parsed is one of the shared static instances
+}
+```
+
+Available values:
+
+- Dialing scope or format: `Local`, `National`, `Shortcode`, `Longcode`
+- Service or billing category: `TollFree`, `SharedCost`, `Mobile`, `Landline`
+- Unclassified: `Unknown`
+
+`System.Text.Json` serializes the type as the shown string value and restores recognized values to the shared static instances. `FromValue` throws for unknown input; use `TryFromValue` for provider or request values. `FromName` and `TryFromName` are also generated.
+
+The values span different classification dimensions and are not inherently mutually exclusive—a mobile number can also be written in a national format, for example. Use the type only where the surrounding contract defines one expected dimension. This package does not parse, normalize, validate, reach, or look up phone numbers, and its values must not be treated as identity or fraud evidence.
